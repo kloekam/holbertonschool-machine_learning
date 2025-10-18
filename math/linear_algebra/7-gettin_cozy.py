@@ -28,4 +28,3 @@ def cat_matrices2D(mat1, mat2, axis=0):
                 new_row.append(row2[j])
             mat.append(new_row)
     return mat
-    
