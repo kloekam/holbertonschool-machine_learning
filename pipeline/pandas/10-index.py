@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
 A script that sets the Timestamp column
 as the index of the DataFrame
