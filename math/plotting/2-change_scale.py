@@ -5,10 +5,10 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
 
 
 def change_scale():
+    """A function that plots the exponential decay of C-14 on a log scale"""
     x = np.arange(0, 28651, 5730)
     r = np.log(0.5)
     t = 5730
@@ -16,10 +16,15 @@ def change_scale():
     plt.figure(figsize=(6.4, 4.8))
 
     plt.plot(x, y)
+    # Set y-axis to logarithmic scale
     plt.yscale("log")
+    # Set the x-axis limits
     plt.xlim(0, 28650)
+    # Label x-axis
     plt.xlabel("Time (years)")
+    # Label y-axis
     plt.ylabel("Fraction Remaining")
+    # Set title
     plt.title("Exponential Decay of C-14")
 
     plt.show()

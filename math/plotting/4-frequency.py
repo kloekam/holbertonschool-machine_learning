@@ -5,21 +5,23 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
 
 
 def frequency():
-
+    """A function that plots a histogram of student grades"""
     np.random.seed(5)
     student_grades = np.random.normal(68, 15, 50)
     plt.figure(figsize=(6.4, 4.8))
 
+    # Plot the histogram
     plt.hist(student_grades, bins=[x*10 for x in range(1, 11)],
              edgecolor="black")
 
+    # Set x-axis and y-axis limits
     plt.xlim(0, 100)
     plt.ylim(0, 30)
 
+    # Set x-axis ticks every 10 units
     plt.xticks(np.arange(0, 101, step=10))
 
     plt.xlabel("Grades")
