@@ -29,11 +29,11 @@ def bars():
     plt.bar(x, peaches, bottom=apples+bananas+oranges, color="#ffe5b4",
             width=0.5, label="peaches")
 
-    plt.xticks(x, people)
     plt.ylim(0, 80)
-    plt.yticks(np.arange(0, 80, step=10))
+    plt.yticks(np.arange(0, 81, 10))
 
     # Set title and label
+    plt.xticks(x, people)
     plt.ylabel("Quantity of Fruit")
     plt.title("Number of Fruit per Person")
 
