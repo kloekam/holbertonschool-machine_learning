@@ -13,13 +13,13 @@ def launch():
     The rocket name
     The name (with the locality) of the launchpad
     """
-    r = requests.get("https://api.spacexdata.com/v4/launches")
-    launcehs_data = r.json()
+    r = requests.get("https://api.spacexdata.com/v4/launches/upcoming")
+    launches_data = r.json()
 
-    if not launcehs_data:
-        print("No launches found")
+    if not launches_data:
+        print("No upcoming launches found")
         return
-    sorted_launches = sorted(launcehs_data, key=lambda x: x["date_unix"])[0]
+    sorted_launches = sorted(launches_data, key=lambda x: x["date_unix"])[0]
 
     rocket_id = sorted_launches["rocket"]
     r = requests.get(
