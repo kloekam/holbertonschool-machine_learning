@@ -35,7 +35,7 @@ def launch():
     launchpad_locality = launchpad_data["locality"]
 
     print(
-        f"{sorted_launches['name']} ({sorted_launches['date_local']})"
+        f"{sorted_launches['name']} ({sorted_launches['date_local']}) "
         f"{rocket_name} - {launchpad_name} ({launchpad_locality})")
 
 
