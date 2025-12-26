@@ -25,21 +25,21 @@ def expectation_maximization(X, k, iterations=1000, tol=1e-5, verbose=False):
         g, likelihood = expectation(X, pi, m, S)
         if i == iterations:
             if verbose:
-                print(f"Log Likelihood after {i} iterations: \
-                       {round(likelihood, 5)}")
+                print(f"Log Likelihood after {i} iterations: "
+                      f"{round(likelihood, 5)}")
             break
 
         if len(prev_l) and abs(likelihood - prev_l[-1]) <= tol:
             if verbose:
-                print(f"Log Likelihood after {i} iterations: \
-                       {round(likelihood, 5)}")
+                print(f"Log Likelihood after {i} iterations: "
+                      f"{round(likelihood, 5)}")
             break
 
         prev_l.append(likelihood)
         pi, m, S = maximization(X, g)
 
         if verbose and (i % 10 == 0 or i == iterations):
-            print(f"Log Likelihood after {i} iterations: \
-                   {round(likelihood, 5)}")
+            print(f"Log Likelihood after {i} iterations: "
+                  f"{round(likelihood, 5)}")
 
     return pi, m, S, g, likelihood
