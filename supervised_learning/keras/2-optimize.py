@@ -1,12 +1,7 @@
 #!/usr/bin/env python3
 """Keras Module"""
 
-import tensorflow as tf
-from tensorflow import keras
-import numpy as np
-import matplotlib.pyplot as plt
-import os
-from keras.optimizers import Adam
+import tensorflow.keras as K
 
 
 def optimize_model(network, alpha, beta1, beta2):

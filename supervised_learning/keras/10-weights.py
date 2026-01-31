@@ -2,11 +2,7 @@
 """Keras Module"""
 
 
-import tensorflow as tf
-from tensorflow import keras
-import numpy as np
-import matplotlib.pyplot as plt
-import os
+import tensorflow.keras as K
 
 
 def save_weights(network, filename, save_format='keras'):
