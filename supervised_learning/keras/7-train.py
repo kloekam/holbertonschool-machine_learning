@@ -24,7 +24,7 @@ def train_model(network,
         def lr_schedule(epoch):
             return alpha / (1 + decay_rate * epoch)
 
-        lr_scheduler = keras.callbacks.LearningRateScheduler(
+        lr_scheduler = K.callbacks.LearningRateScheduler(
             schedule=lr_schedule,
             verbose=1
         )

@@ -18,7 +18,7 @@ def train_model(network,
     callbacks = []
 
     if early_stopping and validation_data is not None:
-        early_stop = tf.keras.callbacks.EarlyStopping(
+        early_stop = K.callbacks.EarlyStopping(
             monitor='val_loss',
             patience=patience
         )

@@ -26,14 +26,14 @@ def train_model(network,
         def lr_schedule(epoch):
             return alpha / (1 + decay_rate * epoch)
 
-        lr_scheduler = keras.callbacks.LearningRateScheduler(
+        lr_scheduler = K.callbacks.LearningRateScheduler(
             schedule=lr_schedule,
             verbose=1
         )
         callbacks.append(lr_scheduler)
 
     if save_best and validation_data is not None and filepath is not None:
-        checkpoint = keras.callbacks.ModelCheckpoint(
+        checkpoint = K.callbacks.ModelCheckpoint(
             filepath=filepath,
             monitor='val_loss',
             save_best_only=True,
