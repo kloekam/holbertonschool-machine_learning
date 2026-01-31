@@ -13,6 +13,7 @@ def save_config(network, filename):
 
 
 def load_config(filename):
+    """Loads a model's configuration in JSON format"""
     with open(filename, 'r') as json_file:
         json_config = json_file.read()
     return keras.models.model_from_json(json_config)
