@@ -7,10 +7,9 @@ def create_mini_batches(X, Y, batch_size):
     A function that creates mini-batches to be used for training
     a neural network using mini-batch gradient descent
     """
-    m = X.shape[0]
-
     shuffle_data = __import__('2-shuffle_data').shuffle_data
-    X_shuffled, Y_shuffled = shuffle_data
+    X_shuffled, Y_shuffled = shuffle_data(X, Y)
+    m = X.shape[0]
 
     mini_batches = []
 
