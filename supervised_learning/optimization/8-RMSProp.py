@@ -9,7 +9,7 @@ def create_RMSProp_op(alpha, beta2, epsilon):
     A function that sets up the
     RMSProp optimization algorithm
     """
-    optimizer = tf.RMSProp(
+    optimizer = tf.keras.optimizers.RMSProp(
         learning_rate=alpha,
         momentum=beta2,
         epsilon=epsilon
