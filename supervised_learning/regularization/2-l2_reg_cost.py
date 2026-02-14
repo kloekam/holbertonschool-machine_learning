@@ -10,5 +10,6 @@ def l2_reg_cost(cost, model):
     cost of a neural network with L2 regularization
     """
     if model.losses:
-        return cost + tf.add_n(model.losses)
+        reg = tf.add_n(model.losses)
+        return cost + reg
     return cost
