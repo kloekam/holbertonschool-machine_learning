@@ -13,14 +13,17 @@ def dropout_create_layer(prev,
     A function  that creates a layer of a
     neural network using dropout
     """
+    init = tf.keras.initializers.VarianceScaling(scale=2.0, mode='fan_avg')
+
     dense = tf.keras.layers.Dense(
         units=n,
-        activation=activation
-    )(prev)
+        activation=activation,
+        kernel_initializer=init
+    )
 
-    dropout = tf.keras.layers.Dropout(
-        rate=1.0 - keep_prob,
-    )(dense,
-      training=training)
+    x = dense(prev)
 
-    return dropout
+    if training:
+        x = tf.nn.dropout(x, rate=1 - keep_prob)
+
+    return x
