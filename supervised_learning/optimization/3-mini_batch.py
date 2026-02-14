@@ -9,7 +9,8 @@ def create_mini_batches(X, Y, batch_size):
     """
     m = X.shape[0]
 
-    X_shuffled, Y_shuffled = __import__('2-shuffle_data').shuffle_data
+    shuffle_data = __import__('2-shuffle_data').shuffle_data
+    X_shuffled, Y_shuffled = shuffle_data
 
     mini_batches = []
 
