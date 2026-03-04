@@ -4,7 +4,6 @@ Convolutional Neural Networks Module
 """
 
 from tensorflow import keras as K
-import numpy as np
 
 
 def lenet5(X):
