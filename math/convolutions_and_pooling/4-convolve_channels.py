@@ -19,20 +19,18 @@ def convolve_channels(images, kernel, padding='same', stride=(1, 1)):
         ph, pw = 0, 0
 
     elif padding == 'same':
-        out_h = int(np.ceil(h / sh))
-        out_w = int(np.ceil(w / sw))
-
-        ph = int(((out_h - 1) * sh + kh - h) / 2)
-        pw = int(((out_w - 1) * sw + kw - w) / 2)
+        ph = (kh - 1) // 2
+        pw = (kw - 1) // 2
 
     else:
         ph, pw = padding
 
-    out_h = 1 + (h + 2 * ph - kh) // sh
-    out_w = 1 + (w + 2 * pw - kw) // sw
+    out_h = (h + 2 * ph - kh) // sh + 1
+    out_w = (w + 2 * pw - kw) // sw + 1
 
-    padded = np.pad(images, ((0, 0), (ph, ph),
-                             (pw, pw), (0, 0)), mode='constant')
+    padded = np.pad(images,
+                    ((0, 0), (ph, ph), (pw, pw), (0, 0)),
+                    mode='constant')
 
     output = np.zeros((m, out_h, out_w))
 
