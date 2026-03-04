@@ -16,36 +16,33 @@ def conv_forward(A_prev, W, b, activation, padding="same", stride=(1, 1)):
     sh, sw = stride
 
     if padding == 'valid':
-        pad_top = pad_bottom = pad_left = pad_right = 0
+        ph, pw = 0, 0
     else:
-        ph = max((int(np.ceil(h_prev / sh)) - 1) * sh + kh - h_prev, 0)
-        pw = max((int(np.ceil(w_prev / sw)) - 1) * sw + kw - w_prev, 0)
-        pad_top = ph // 2
-        pad_bottom = ph - pad_top
-        pad_left = pw // 2
-        pad_right = pw - pad_left
+        ph = max((kh - 1), 0)
+        pw = max((kw - 1), 0)
 
-    out_h = (h_prev + pad_top + pad_bottom - kh) // sh + 1
-    out_w = (w_prev + pad_left + pad_right - kw) // sw + 1
+    pad_top = ph // 2
+    pad_bottom = ph - pad_top
+    pad_left = pw // 2
+    pad_right = pw - pad_left
 
-    A_padded = np.pad(A_prev, (
-        (0, 0),
-        (pad_top, pad_bottom),
-        (pad_left, pad_right),
-        (0, 0)),
-        mode='constant')
+    out_h = (h_prev + ph - kh) // sh + 1
+    out_w = (w_prev + pw - kw) // sw + 1
+
+    A_padded = np.pad(A_prev,
+                      ((0, 0),
+                       (pad_top, pad_bottom),
+                       (pad_left, pad_right),
+                       (0, 0)),
+                      mode='constant')
 
     Z = np.zeros((m, out_h, out_w, c_new))
 
     for i in range(out_h):
         for j in range(out_w):
             for k in range(c_new):
-                i_start = i * sh
-                j_start = j * sw
-                region = A_padded[:, i_start:i_start+kh, j_start:j_start+kw, :]
-                Z[:, i, j, k] = (np.sum(region * W[:, :, :, k],
-                                        axis=(1, 2, 3)) + b[0, 0, 0, k])
+                region = A_padded[:, i*sh:i*sh+kh, j*sw:j*sw+kw, :]
+                Z[:, i, j, k] = np.sum(region * W[:, :, :, k],
+                                       axis=(1, 2, 3)) + b[0, 0, 0, k]
 
-    A = activation(Z)
-
-    return A
+    return activation(Z)
