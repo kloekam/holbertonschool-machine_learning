@@ -65,8 +65,7 @@ def inception_network():
     # Dropout 40%
     X1 = K.layers.Dropout(0.4)(X1)
 
-    # Flatten + Softmax output (1000 classes)
-    X1 = K.layers.Flatten()(X1)
+    # Softmax output (1000 classes)
     X1 = K.layers.Dense(1000, activation='softmax')(X1)
 
     model = K.models.Model(inputs=X, outputs=X1)

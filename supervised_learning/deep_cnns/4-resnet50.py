@@ -50,7 +50,6 @@ def resnet50():
     X = K.layers.AveragePooling2D((7, 7), strides=(1, 1), padding='valid')(X)
 
     # Fully connected output: 1000 classes
-    X = K.layers.Flatten()(X)
     X = K.layers.Dense(1000, activation='softmax',
                        kernel_initializer=initializer)(X)
 

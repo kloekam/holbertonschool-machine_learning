@@ -43,7 +43,6 @@ def densenet121(growth_rate=32, compression=1.0):
     X = K.layers.AveragePooling2D((7, 7), strides=(1, 1), padding='valid')(X)
 
     # Fully connected: 1000 classes softmax
-    X = K.layers.Flatten()(X)
     X = K.layers.Dense(1000, activation='softmax',
                        kernel_initializer=initializer)(X)
 
