@@ -135,11 +135,11 @@ class Yolo:
     @staticmethod
     def load_images(folder_path):
         """Load images from a folder."""
-        image_paths = [
+        image_paths = sorted([
             os.path.join(folder_path, f)
             for f in os.listdir(folder_path)
             if f.endswith(('.jpg', '.jpeg', '.png', '.bmp', '.tiff'))
-        ]
+        ])
         images = [cv2.imread(path) for path in image_paths]
 
         return images, image_paths
