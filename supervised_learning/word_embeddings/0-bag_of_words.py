@@ -6,6 +6,7 @@ import numpy as np
 
 def bag_of_words(sentences, vocab=None):
     """Create a bag of words embedding matrix."""
+
     def tokenize(sentence):
         """Tokenize a sentence into lowercase words."""
         sentence = sentence.lower()
@@ -30,4 +31,3 @@ def bag_of_words(sentences, vocab=None):
                 embeddings[i][feature_index[word]] += 1
 
     return embeddings, features
-    
