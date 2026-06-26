@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 """Word2Vec model training module."""
+import os
+import sys
+if 'PYTHONHASHSEED' not in os.environ:
+    os.environ['PYTHONHASHSEED'] = '0'
+    os.execv(sys.executable, [sys.executable] + sys.argv)
 import gensim
 
 
@@ -22,5 +27,5 @@ def word2vec_model(sentences, vector_size=100, min_count=5, window=5,
         seed=seed,
         workers=workers
     )
-
     return model
+  
